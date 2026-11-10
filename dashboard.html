@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Real-Time Fraud Detection System</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        <h2>Fraud Shield</h2>
+    </div>
+
+    <li onclick="logout()">
+🚪 Logout
+</li>
+
+    <ul>
+
+        <li onclick="showPage('dashboardPage')">
+            Dashboard
+        </li>
+
+        <li onclick="showPage('transactionsPage')">
+            Transactions
+        </li>
+
+        <li onclick="showPage('alertsPage')">
+            Fraud Alerts
+        </li>
+
+        <li onclick="showPage('analyticsPage')">
+            Analytics
+        </li>
+
+        <li onclick="showPage('reportsPage')">
+            Reports
+        </li>
+
+        <li onclick="showPage('settingsPage')">
+            Settings
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="main">
+
+    <header>
+
+        <h1>Real-Time Fraud Detection Dashboard</h1>
+
+        <div class="status">
+            🟢 System Protected
+        </div>
+
+    </header>
+
+    <!-- Dashboard -->
+
+    <div id="dashboardPage" class="page">
+        Dashboard Content
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Transactions</h3>
+                <h2>12,450</h2>
+            </div>
+
+            <div class="card">
+                <h3>Fraud Detected</h3>
+                <h2>248</h2>
+            </div>
+
+            <div class="card">
+                <h3>High Risk Users</h3>
+                <h2>34</h2>
+            </div>
+
+            <div class="card">
+                <h3>Amount Monitored</h3>
+                <h2>₹8.5M</h2>
+            </div>
+
+        </div>
+
+        <div class="table-card">
+
+            <h2>Live Transactions</h2>
+
+            <table>
+
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+
+                <tr>
+                    <td>TX001</td>
+                    <td>Shashank</td>
+                    <td>₹45,000</td>
+                    <td class="safe">Safe</td>
+                </tr>
+
+                <tr>
+                    <td>TX002</td>
+                    <td>Rahul</td>
+                    <td>₹95,000</td>
+                    <td class="danger">Fraud Risk</td>
+                </tr>
+
+                <tr>
+                    <td>TX003</td>
+                    <td>Amit</td>
+                    <td>₹15,000</td>
+                    <td class="safe">Safe</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- Transactions -->
+
+    <div id="transactionsPage" class="page" style="display:none">
+
+        <h2>Transaction Monitoring</h2>
+        <p>All Transactions will appear here.</p>
+        <div class="card">
+            Monitor all banking transactions in real time.
+        </div>
+
+    </div>
+
+    <!-- Alerts -->
+
+    <div id="alertsPage" class="page" style="display:none">
+
+        <h2>Fraud Alerts</h2>
+         <p>Fraud alerts will appear here.</p>
+        <div class="alert danger-box">
+            ⚠ Suspicious Transaction Detected
+        </div>
+
+        <div class="alert warning-box">
+            ⚠ Multiple Login Attempts
+        </div>
+
+    </div>
+
+    <!-- Analytics -->
+
+    <div id="analyticsPage" class="page" style="display:none">
+
+        <div class="chart-card">
+
+            <h2>Risk Analytics</h2>
+            
+            <canvas id="fraudChart"></canvas>
+
+        </div>
+
+        <h2>Fraud Analytics</h2>
+
+<div class="chart-container">
+
+<canvas id="fraudChart"></canvas>
+
+</div>
+
+    </div>
+
+    <!-- Reports -->
+
+    <div id="reportsPage" class="page" style="display:none">
+
+    <h2>Reports</h2>
+
+    <button
+    class="action-btn"
+    onclick="downloadReport()">
+
+        Download Daily Report
+
+    </button>
+
+    <button
+    class="action-btn"
+    onclick="downloadMonthlyReport()">
+
+        Download Monthly Report
+
+    </button>
+
+</div>
+
+    <!-- Settings -->
+
+    <div id="settingsPage" class="page" style="display:none">
+
+        <h2>Settings</h2>
+
+        <button class="action-btn">
+            Change Password
+        </button>
+
+        <button class="action-btn">
+            Logout
+        </button>
+
+    </div>
+
+    <div class="dashboard-grid">
+
+    <div class="transactions-panel">
+
+        <h2>Live Transactions</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>TX1001</td>
+                    <td>Shashank</td>
+                    <td>₹45,000</td>
+                    <td class="safe">Safe</td>
+                </tr>
+
+                <tr>
+                    <td>TX1002</td>
+                    <td>Rahul</td>
+                    <td>₹95,000</td>
+                    <td class="danger">High Risk</td>
+                </tr>
+
+                <tr>
+                    <td>TX1003</td>
+                    <td>Amit</td>
+                    <td>₹22,000</td>
+                    <td class="safe">Safe</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="logs-panel">
+
+        <h2>Security Logs</h2>
+
+        <div class="log-item">
+            ⚠ High Risk Transaction Detected
+        </div>
+
+        <div class="log-item">
+            ✅ Transaction Approved
+        </div>
+
+        <div class="log-item">
+            ⚠ Multiple Failed Login Attempts
+        </div>
+
+        <div class="log-item">
+            ✅ Fraud Analysis Completed
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
